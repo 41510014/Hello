@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hello</string>
+    <string name="btn">Buton</string>
+    <string name="Happy">Happy  Brithday!!!</string>
+    <string name="bet_dollar">Dollar</string>
+    <string name="bet_euro">Euro</string>
+    <string name="hint_rmb">Input RMB</string>
+    <string name="bet_won">Won</string>
+    <string name="reset">重置</string>
+    <string name="lable_add1">+1 point</string>
+    <string name="lable_add2">+2 point</string>
+    <string name="lable_add3">+3 point</string>
+    <string name="btn_save_label">Save</string>
+    <string name="btn_opencfg_label">Opencfg</string>
+</resources>
