@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import org.jsoup.Jsoup;
@@ -21,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RateListActivity extends ListActivity {
-
+    private static final String TAG="MyAdapter";
     private String[] list_data = {"one", "two", "three", "four"};
  //   int msgWhat = 3;
     Handler handler;
@@ -34,6 +37,7 @@ public class RateListActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         List<String> list1 = new ArrayList<String>();
+        ListView listView=findViewById( R.id.mylist );
        // GridView listView=findViewById( R.id.mylist );
 
         for (int i = 1; i < 100; i++) {
@@ -43,7 +47,10 @@ public class RateListActivity extends ListActivity {
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list_data);
         setListAdapter(adapter);
-        getListAdapter();
+        //getListAdapter();
+        listView.setEmptyView( findViewById( R.id.nodata ) );
+        listView.setOnItemClickListener( (AdapterView.OnItemClickListener) this );
+        getListView().setOnItemLongClickListener( (AdapterView.OnItemLongClickListener) this );
 
 
         /*listView.setAdapter( adapter );
@@ -63,6 +70,9 @@ public class RateListActivity extends ListActivity {
                 super.handleMessage(msg);
             }
         };
+
+
+
     }
 
 
@@ -100,6 +110,17 @@ public class RateListActivity extends ListActivity {
 
     }
 
+    public void onItemClick(AdapterView<?> listview, View view,int position){
+        Log.i( TAG,"onItemClick:position="+position );
+        Log.i( TAG,"onItemClick:parent="+listview );
+
+        listItems.remove( listview.getItemAtPosition( position ) );
+
+    }
+
+    public boolean onItemLongClick(AdapterView<?> listview, View view,int position,long id){
+        return true;
+    }
 
 
 
